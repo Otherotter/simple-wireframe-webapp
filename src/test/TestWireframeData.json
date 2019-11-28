@@ -1,0 +1,252 @@
+{
+    "members":[
+        {
+            "name": "Peter Paker", 
+            "id": 0,
+            "administrator": false,
+            "projects": [
+                {
+                    "name": "Photograph portfolio",
+                    "key": 0,
+                    "height":1000,
+                    "width": 1000,
+                    "timestamp": 0,
+                    "component": [
+                        {
+                            "control": "container",
+                            "properties": { 
+                                "text" : "None",
+                                "font_size" : "None",
+                                "background_color" : "#FFFFFFFF",
+                                "border_color" : "#FFFFFFFF",
+                                "border_thickness" : 1,
+                                "border_radius" : 1,
+                                "width": 100,
+                                "height": 100,
+                                "margin-top": 0
+                            }
+                        },
+                        {
+                            "control": "label",
+                            "properties": { 
+                                "text" : "Hello",
+                                "font_size" : 10,
+                                "background_color" : "#EEEE3333",
+                                "border_color" : "#AAAA3333",
+                                "border_thickness" : 2,
+                                "border_radius" : 2,
+                                "width": 10,
+                                "height": 10,
+                                "margin-top": 10
+                            }
+
+                        },
+                        {
+                            "control": "button",
+                            "properties": { 
+                                "text" : "CLICK",
+                                "font_size" : 10,
+                                "background_color" : "#EEEE3333",
+                                "border_color" : "#AAAA3333",
+                               	"border_thickness" : 2,
+                                "border_radius" : 2,
+                                "width": 10,
+                                "height": 10,
+                                "margin-top": 20
+                            }
+
+                        },
+                        {
+                            "control": "textfield",
+                            "properties": { 
+                                "text" : "TEXTFIELD",
+                                "font_size" : 12,
+                                "background_color" : "#EEEE3333",
+                                "border_color" : "#BBBBB111",
+                               	"border_thickness" : 2,
+                                "border_radius" : 2,
+                                "width": 100,
+                                "height": 100,
+                                "margin-top": 30
+                            }
+
+                        }
+                    ]
+
+                }, 
+                { 
+                    "name": "Spider-Man Rescue Thread",
+                    "key": 1,
+                    "height":1000,
+                    "width": 1000,
+                    "timestamp": 1,
+                    "component": [
+                        {
+                            "control": "container",
+                            "properties": { 
+                                "text" : "None",
+                                "font_size" : "None",
+                                "background_color" : "#FFFFFFFF",
+                                "border_color" : "#101010101",
+                                "border_thickness" : 1,
+                                "border_radius" : 1,
+                                "width": 100,
+                                "height": 100,
+                                "margin-top": 0
+                            }
+                        },
+                        {
+                            "control": "label",
+                             "properties": { 
+                                "text" : "Hello",
+                                "font_size" : 10,
+                                "background_color" : "#EEEE3333",
+                                "border_color" : "#AAAA3333",
+                                "border_thickness" : 3,
+                                "border_radius" : 3,
+                                "width": 10,
+                                "height": 10,
+                                "margin-top": 10
+                            }
+
+                        },
+                        {
+                            "control": "button",
+                            "properties": { 
+                                "text" : "CLICK",
+                                "font_size" : 10,
+                                "background_color" : "#EEEE3333",
+                                "border_color" : "#A5F33C83",
+                               	"border_thickness" : 2,
+                                "border_radius" : 2,
+                                "width": 10,
+                                "height": 10,
+                                "margin-top": 20
+                            }
+
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Charlie Rosa", 
+            "id": 1,
+            "administrator": false,
+            "projects": [
+                {
+                    "name": "Spiker",
+                    "key": 0,
+                    "height":500,
+                    "width": 400,
+                    "timestamp": 0,
+                    "component": [
+                        {
+                            "control": "container",
+                            "properties": { 
+                                 "text" : "None",
+                                "font_size" : "None",
+                                "background_color" : "#FFFFFFFF",
+                                "border_color" : "#101010101",
+                                "border_thickness" : 1,
+                                "border_radius" : 2,
+                                "width": 100,
+                                "height": 100,
+                                "margin-top": 10
+                            }
+                        },
+                        {
+                           "control": "button",
+                            "properties": { 
+                                "text" : "button",
+                                "font_size" : 10,
+                                "background_color" : "#EEEE3333",
+                                "border_color" : "#A5F33C83",
+                               	"border_thickness" : 2,
+                                "border_radius" : 2,
+                                "width": 10,
+                                "height": 10,
+                                "margin-top": 20
+                            }
+
+                        }
+                    ]
+
+                },
+                {
+                    "name": "DataBaseSite",
+                    "key": 1,
+                    "height":500,
+                    "width": 400,
+                    "timestamp": 1,
+                    "component": [
+                        {
+                           	"control": "container",
+                            "properties": { 
+                                 "text" : "None",
+                                "font_size" : "None",
+                                "background_color" : "#FFFFFFFF",
+                                "border_color" : "#101010101",
+                                "border_thickness" : 1,
+                                "border_radius" : 2,
+                                "width": 100,
+                                "height": 100,
+                                "margin-top": 10
+                            }
+                        },
+                        {
+                           	"control": "label",
+                            "properties": { 
+                                "text" : "Hello",
+                                "font_size" : 10,
+                                "background_color" : "#EEEE3333",
+                                "border_color" : "#AAAA3333",
+                                "border_thickness" : 3,
+                                "border_radius" : 3,
+                                "width": 10,
+                                "height": 10,
+                                "margin-top": 20
+                            }
+
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Prof Mckenna", 
+            "id": 2,
+            "administrator": true,
+            "projects": [
+                {
+                    "name": "WireFrame",
+                    "key": 0,
+                    "height":1000,
+                    "width": 700,
+                    "timestamp": 0,
+                    "component": [
+                        {
+                            "control": "button",
+                            "properties": { 
+                                "text" : "I LOVE STARCRAFT",
+                                "font_size" : 10,
+                                "background_color" : "#EEEE3333",
+                                "border_color" : "#A5F33C83",
+                               	"border_thickness" : 2,
+                                "border_radius" : 2,
+                                "width": 10,
+                                "height": 10,
+                                "margin-top": 0
+                            }
+
+                        }
+                    ]
+
+                
+                }
+            ]
+
+        }
+
+    ]
+}
