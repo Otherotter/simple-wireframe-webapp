@@ -15,12 +15,13 @@ class Navbar extends React.Component {
     return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link  to="/Home" class="navbar-brand" href="#">Wireframe</Link>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        {links}
-      </div>
+      {links}
+      {/* <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="" data-target="#myModal" data-toggle="modal">About</a>
+            </li>
+        </ul>
+      */}
       
     </nav>
     );

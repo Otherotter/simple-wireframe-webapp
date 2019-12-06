@@ -4,16 +4,85 @@
         COLORS THAT WE'LL USE TOGETHER IN MULTIPLE PLACES THAT
         TOGETHER WILL MAKE UP A GIVEN THEME
     */
-    --swatch-foundation:    #6dd6ff; /* USED FOR BODY BACKGROUND */
-    --swatch-primary:       #E6E6E6; /* DOMINANT COLOR, USED FOR MOST BACKGROUNDS */
-    --swatch-complement:    #E1E4CB; /* USED IN FORGROUND OF PRIMARY FOR TEXT AND BORDERS */
+    --swatch-foundation:    #1a1a19ea; /* USED FOR BODY BACKGROUND */
+    --swatch-primary:       rgb(90, 90, 87); /* DOMINANT COLOR, USED FOR MOST BACKGROUNDS */
+    --swatch-complement:    rgb(239, 241, 217); /* USED IN FORGROUND OF PRIMARY FOR TEXT AND BORDERS */
     --swatch_contrast:      #111111; /* USED IN MOUSE-OVER SELECTION OF LARGE ELEMENTS */
     --swatch-accent:        #669966; /* USED IN MOUSE-OVER SELECTION OF TEXT AND BORDERS */    
     --my-font-family:          "Robaaaoto";
     --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
   }
   
-  body {
-    background-color: var(--swatch-foundation);
-    font-family: Courier, Monaco, monospace;
+  body { background: var(--swatch-foundation) !important; }
+
+  .container-sm{
+    background-color: var(--swatch-primary);
+    color: var(--swatch-complement);
+    margin: 14px;
+    border-radius: 10px;
+    min-height:30cm;
+    height:auto !important;    
+  }
+  .card{
+    border-radius: 100px;
+  }
+
+  #document-area{
+    background-color: rgba(255,0,0,1);
+  }
+
+  #myCanvas{
+    background-color: #E6E6E6;  
+
+  }
+
+  #intial{
+    
+      height:20px;
+      width: 20px;
+      background-color: red;
+      border-radius: 50%;
+      text-align: center;
+  }
+
+.component_container{
+  height: 50px;
+  width: 70px;
+  border-style: solid;
+  border-color: black;
+  background-color: #ffffff;
+}
+.component_label{
+  height: 30px;
+  width: 150px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+}
+.component_button{
+  height: 30px;
+  text-align: center;
+  width: 80px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  background-color: #afafaf;
+}
+.component_textfield{
+  height: 30px;
+  width: 100px;
+  border-style: solid;
+  border-color: black;
+  color: #afafaf;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.component_description{
+  margin-left: 5px;
+}
+
+
+  .dummy{
+    fill:white;stroke:black;stroke-width:2;opacity:0.5
   }

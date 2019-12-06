@@ -9,7 +9,7 @@ import LoginScreen from './components/login_screen/LoginScreen.js';
 import RegisterScreen from './components/register_screen/RegisterScreen.js';
 import HomeScreen from './components/home_screen/HomeScreen.js';
 import DatabaseTester from './test/DatabaseTester'
-// import ListScreen from './components/list_screen/ListScreen.js';
+import EditScreen from './components/edit_screen/EditScreen.js';
 // import ItemScreen from './components/item_screen/ItemScreen.js';
 
 
@@ -24,15 +24,16 @@ class App extends Component{
       
       {console.log(firebaseConnect())}
       {console.log(connect(mapStateToProps))}
-        <div className="App">
+        <div className="App" >
           <Navbar />
           <Switch>
             <Route exact path="/Home" component={HomeScreen}/> 
             <Route path="/Login" component={LoginScreen} />
             <Route path="/Home/name+id" component={HomeScreen} />  
+            <Route path="/Edit/" component={EditScreen} />
             <Route path="/Register" component={RegisterScreen} /> 
             <Route path="/DatabaseTester" component={DatabaseTester} />
-            <Route path="/:any" component={HomeScreen} />
+            <Route any path="/Home" component={HomeScreen} />
             {/*  />
             
             

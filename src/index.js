@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 
 import './css/layout.css'
 import './css/style.css'
-import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import ReactReduxFirebaseApp from './store/ReactReduxFirebaseApp'
 

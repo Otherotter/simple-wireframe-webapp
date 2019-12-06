@@ -20,16 +20,13 @@ class LoggedInLinks extends React.Component {
       //   <li><NavLink to="/" onClick={this.handleLogout}>Log Out</NavLink></li> {/* I left NavLink instead of anchor tag because I'm using airbnb eslint rules */}
       //   <li><NavLink to="/" className="btn btn-floating pink lighten-1">{profile.initials}</NavLink></li>
       // </ul>
-      <div class="navbar-nav">
-      <form class="form-inline my-2 my-lg-0">
-        <NavLink to="/" onClick={this.handleLogout}>
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log out</button>
+      <div class="navbar-nav ml-auto">
+        <NavLink to="/Home" onClick={this.handleLogout}>
+          <button class="btn btn-outline-success p-2">Log out</button>
         </NavLink>
-        <NavLink to="/" className="btn btn-floating red">{profile.initials}</NavLink>
-        {/* <Link to="/Register">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
-        </Link> */}
-      </form>
+        <NavLink to="/Home">
+            <span class="m-3"><a id="intial">{profile.initials}</a></span>
+        </NavLink>
       </div>
 
     );

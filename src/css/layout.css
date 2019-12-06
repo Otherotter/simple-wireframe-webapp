@@ -1,0 +1,12 @@
+#document-area{
+    height: 700px;
+    width: 900px;
+    text-align: center;
+    
+}
+
+#myCanvas{
+    position: relative;
+    top: 6cm
+   
+}   
