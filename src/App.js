@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 
+
 import Navbar from './components/navbar/Navbar.js';
 import LoginScreen from './components/login_screen/LoginScreen.js';
 import RegisterScreen from './components/register_screen/RegisterScreen.js';
@@ -17,11 +18,8 @@ class App extends Component{
 
   render() {
     const { auth } = this.props;
-
     return (
       <BrowserRouter>
-
-      
       {console.log(firebaseConnect())}
       {console.log(connect(mapStateToProps))}
         <div className="App" >

@@ -1,8 +1,9 @@
 {
     "members":[
         {
-            "name": "Peter Paker", 
-            "id": 0,
+            "firstName": "Peter", 
+            "lastName": "Paker", 
+            "id": 100000000,
             "administrator": false,
             "projects": [
                 {
@@ -11,9 +12,9 @@
                     "height":1000,
                     "width": 1000,
                     "timestamp": 0,
-                    "component": [
+                    "components": [
                         {
-                            "control": "container",
+                            "control": "component_container",
                             "properties": { 
                                 "text" : "None",
                                 "font_size" : "None",
@@ -130,115 +131,31 @@
             ]
         },
         {
-            "name": "Charlie Rosa", 
-            "id": 1,
-            "administrator": false,
-            "projects": [
-                {
-                    "name": "Spiker",
-                    "key": 0,
-                    "height":500,
-                    "width": 400,
-                    "timestamp": 0,
-                    "component": [
-                        {
-                            "control": "container",
-                            "properties": { 
-                                 "text" : "None",
-                                "font_size" : "None",
-                                "background_color" : "#FFFFFFFF",
-                                "border_color" : "#101010101",
-                                "border_thickness" : 1,
-                                "border_radius" : 2,
-                                "width": 100,
-                                "height": 100,
-                                "margin-top": 10
-                            }
-                        },
-                        {
-                           "control": "button",
-                            "properties": { 
-                                "text" : "button",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#A5F33C83",
-                               	"border_thickness" : 2,
-                                "border_radius" : 2,
-                                "width": 10,
-                                "height": 10,
-                                "margin-top": 20
-                            }
-
-                        }
-                    ]
-
-                },
-                {
-                    "name": "DataBaseSite",
-                    "key": 1,
-                    "height":500,
-                    "width": 400,
-                    "timestamp": 1,
-                    "component": [
-                        {
-                           	"control": "container",
-                            "properties": { 
-                                 "text" : "None",
-                                "font_size" : "None",
-                                "background_color" : "#FFFFFFFF",
-                                "border_color" : "#101010101",
-                                "border_thickness" : 1,
-                                "border_radius" : 2,
-                                "width": 100,
-                                "height": 100,
-                                "margin-top": 10
-                            }
-                        },
-                        {
-                           	"control": "label",
-                            "properties": { 
-                                "text" : "Hello",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#AAAA3333",
-                                "border_thickness" : 3,
-                                "border_radius" : 3,
-                                "width": 10,
-                                "height": 10,
-                                "margin-top": 20
-                            }
-
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Prof Mckenna", 
-            "id": 2,
+            "firstName": "Prof", 
+            "lastName": "Mckenna", 
+            "id": 100000001,
             "administrator": true,
             "projects": [
                 {
-                    "name": "WireFrame",
+                    "name": "Wireframer",
                     "key": 0,
                     "height":1000,
-                    "width": 700,
+                    "width": 1000,
                     "timestamp": 0,
-                    "component": [
+                    "components": [
                         {
-                            "control": "button",
+                            "control": "component_container",
                             "properties": { 
-                                "text" : "I LOVE STARCRAFT",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#A5F33C83",
-                               	"border_thickness" : 2,
-                                "border_radius" : 2,
-                                "width": 10,
-                                "height": 10,
+                                "text" : "None",
+                                "font_size" : "None",
+                                "background_color" : "#FFFFFFFF",
+                                "border_color" : "#FFFFFFFF",
+                                "border_thickness" : 1,
+                                "border_radius" : 1,
+                                "width": 100,
+                                "height": 100,
                                 "margin-top": 0
                             }
-
                         }
                     ]
 
@@ -250,3 +167,4 @@
 
     ]
 }
+

@@ -4,37 +4,49 @@ import {Link } from 'react-router-dom';
 import todoJson from './TestWireframeData.json'
 import { getFirestore } from 'redux-firestore';
 import { firebaseConnect } from 'react-redux-firebase';
+import * as actionCreators from '../store/actions/actionCreators'
 
 class DatabaseTester extends React.Component {
 
     // NOTE, BY KEEPING THE DATABASE PUBLIC YOU CAN
     // DO THIS ANY TIME YOU LIKE WITHOUT HAVING
     // TO LOG IN
-
-
     handleClear = () => {
         const fireStore = getFirestore();
-        fireStore.collection('users').get().then(function(querySnapshot){
+        fireStore.collection('members').get().then(function(querySnapshot){
             querySnapshot.forEach(function(doc) {
                 console.log("deleting " + doc.id);
-                fireStore.collection('todoLists').doc(doc.id).delete();
+                fireStore.collection('members').doc(doc.id).delete();
             })
         });
     }
 
     handleReset = () => {
         const fireStore = getFirestore();
-        todoJson.members.forEach(listData => {
-            fireStore.collection('users').add({
-                    name: listData.name,
-                    id: listData.id,
-                    administrator: listData.administrator,
-                    projects: listData.projects
+        todoJson.members.forEach(wireframe => {
+            fireStore.collection('members').add({
+                    firstName: wireframe.firstName,
+                    lastName: wireframe.lastName,
+                    id: wireframe.id,
+                    administrator: wireframe.administrator,
+                    projects: wireframe.projects,
                 }).then(() => {
                     console.log("DATABASE RESET");
-                }).catch((err) => {
-                    console.log(err);
-                });
+                })
+                // .firebase.auth().createUserWithEmailAndPassword(
+                //     newUser.email,
+                //     newUser.password,
+                // ).then(resp => firestore.collection('users').doc(resp.user.uid).set({
+                //     firstName: newUser.firstName,
+                //     lastName: newUser.lastName,
+                //     initials: `${newUser.firstName[0]}${newUser.lastName[0]}`,
+                // })).then(() => {
+                //     dispatch(actionCreators.registerSuccess);
+                // })
+                // .catch((err) => {
+                //     console.log("error()");
+                //     dispatch(actionCreators.registerError);
+                // });   
         });
     }
 

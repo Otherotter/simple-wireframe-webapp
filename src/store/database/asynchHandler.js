@@ -20,7 +20,7 @@ export const logoutHandler = (firebase) => (dispatch, getState) => {
 
 export const registerHandler = (newUser, firebase) => (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
-    console.log(newUser.email == "")
+    console.log(newUser.email === "")
     console.log("registerHandler() " + newUser.email + ", " + newUser.password);
     firebase.auth().createUserWithEmailAndPassword(
         newUser.email,
@@ -31,8 +31,20 @@ export const registerHandler = (newUser, firebase) => (dispatch, getState, { get
         initials: `${newUser.firstName[0]}${newUser.lastName[0]}`,
     })).then(() => {
         dispatch(actionCreators.registerSuccess);
-    }).catch((err) => {
+    })
+    .catch((err) => {
         console.log("error()");
         dispatch(actionCreators.registerError);
+    });
+
+    firestore.collection('members').add({ 
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        administrator: false,
+        projects: []
+    }).then(docRef => {
+      console.log("Document written with ID: ", docRef.id);
+    }).catch((err) => {
+        console.log(err);
     });
 };

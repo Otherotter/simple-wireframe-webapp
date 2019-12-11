@@ -1,12 +1,92 @@
 #document-area{
-    height: 700px;
-    width: 900px;
-    text-align: center;
-    
+    height: 500px;
+    width: 760px;    
 }
+
+#wireframer{
+  position: relative;
+  overflow: scroll;
+  /* width: 50%; */
+  /* margin: 0 auto; */
+  /* overflow:scroll */
+  /* transform:translate(0px,40px); */
+  /* transform:scale(2,2);  zoom in*/
+  
+  
+}
+#big{
+  position: relative;
+}
+
+.dimension_input{
+  height:0.7cm;
+  width: 1.1cm;
+  font-size: 13px;
+  border-radius: 10px;
+  margin: 2px
+}
+
+#dimension_button{
+  position: relative;
+  height:0.7cm;
+  width: 2cm;
+  border-radius: 5px;
+  margin: 3px;
+  fill: none;
+  border: solid;
+  background-color: transparent;
+  color: #4CAF50 ;
+  top: 2px 
+}
+
+
+
+
+
+
 
 #myCanvas{
     position: relative;
     top: 6cm
    
 }   
+#item1{
+    position: absolute
+}
+
+#mydiv {
+    position: absolute;
+    z-index: 9;
+    background-color: #f1f1f1;
+    text-align: center;
+    border: 1px solid #d3d3d3;
+  }
+  
+  #mydivheader {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
+  }
+
+ 
+  .center-block {
+     margin-left:auto;
+     margin-right:auto;
+     display:block;
+  }
+  
+
+  .text-center {
+     text-align:center;
+     align-content: center;
+     border-radius: 10px;
+  }
+
+
+
+  .c{
+    max-width: 20rem;
+    
+  }
