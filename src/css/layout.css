@@ -4,7 +4,7 @@
 }
 
 #wireframer{
-  position: relative;
+  /* position: relative; */
   overflow: scroll;
   /* width: 50%; */
   /* margin: 0 auto; */
@@ -16,6 +16,7 @@
 }
 #big{
   position: relative;
+  left: default;
 }
 
 .dimension_input{

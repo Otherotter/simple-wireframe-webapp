@@ -15,8 +15,8 @@ class Properties extends React.Component {
     propertiesView() {
         const itemSelected = this.props.itemSelected;
         let itemComponent = this.props.itemComponent;
-        console.log(itemComponent);
-        console.log(typeof itemComponent );
+        // console.log(itemComponent);
+        // console.log(typeof itemComponent );
         // console.log(itemComponent.className);
         // let componentClass = itemComponent.className.slice(0,itemComponent.className.indexOf(" "));
         let componentClass = "A"

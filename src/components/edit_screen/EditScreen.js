@@ -91,38 +91,34 @@ class EditScreen extends Component {
         // console.log(big);
         // console.log(big.childNodes);
     
-        if(big.childElementCount >= 1){
-            for(var i = 0; i < big.childElementCount; i++){
-                
-                big.children[i].style.transform = "scale(2)";
-                big.children[i].style.transformOrigin = "0% 0% 0px";
-                // console.log(big.children[i].style.transform);
-                // console.log(big.children[i].style.transform-origin );
+        // if(big.childElementCount >= 1){
+        //     for(var i = 0; i < big.childElementCount; i++){
+        
+        //         big.children[i].style.transform = "scale(2)";
+        //         big.children[i].style.transformOrigin = "0% 0% 0px";
+        //         // console.log(big.children[i].style.transform);
+        //         // console.log(big.children[i].style.transform-origin );
                
-            //     this.setState({components: [
-            //         ...this.state.components.filter(x => element.ID !== x.ID),
-            //         { id: element.id, name: element.name }
-            //    ]})
-            let component = this.state.components[i];
+        //     //     this.setState({components: [
+        //     //         ...this.state.components.filter(x => element.ID !== x.ID),
+        //     //         { id: element.id, name: element.name }
+        //     //    ]})
+        //     let component = this.state.components[i];
           
-            // this.setState(
-            //     this.state.components[i].properties.transform =  "scale(2)",
+        //     // this.setState(
+        //     //     this.state.components[i].properties.transform =  "scale(2)",
 
-            // );
-            console.log(component);
-            console.log(component.properties.transform);
-            console.log("ASDF");
-                // transform: scale(2);
+        //     // );
+        //     console.log(component);
+        //     console.log(component.properties.transform);
+        //     console.log("ASDF");
+        //         // transform: scale(2);
 
-            }
-        }
-        // big.childNodes.map(node => (
-        //     console.log(node)
-        //     // component
-        // ));
+        //     }
+        // }
+        
         big.style.height = newHeight+"px";
-        big.style.width = newWidth+"px";
-       
+        big.style.width = newWidth+"px"; 
         zoomIn.removeAttribute("class","disabled");
         zoomIn.setAttribute("class","nav-item");
     }
@@ -133,8 +129,8 @@ class EditScreen extends Component {
         // this.props.width.slice(0,this.props.width.indexOf("p"))
         let originalHeight =  big.style.height.slice(0,big.style.height.indexOf("p"))
         let originalWidth =  big.style.height.slice(0,big.style.height.indexOf("p"))
-        let newHeight = big.style.height.slice(0,big.style.height.indexOf("p")) / 1.5;
-        let newWidth = big.style.width.slice(0,big.style.width.indexOf("p")) / 1.5;
+        let newHeight = big.style.height.slice(0,big.style.height.indexOf("p")) / 2;
+        let newWidth = big.style.width.slice(0,big.style.width.indexOf("p")) / 2;
         if(originalHeight !== this.state.height && originalWidth !== this.state.width){
             big.style.height = newHeight+"px";
             big.style.width = newWidth+"px";

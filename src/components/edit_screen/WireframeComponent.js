@@ -9,7 +9,7 @@ class WireframeComponent extends React.Component {
     
     render() {
         const component = this.props.component;
-        console.log(component);
+        // console.log(component);
         var text = null
         if(component.properties.text != null) text = component.properties.text
 
@@ -17,13 +17,17 @@ class WireframeComponent extends React.Component {
         return (
             <Draggable 
             bounds="parent"
-           
+            cancel="span"
             >
                 <div id={component.control+component.id} 
                 className={component.control} 
                 onClick={this.props.handleSelect}
-                style={component.properties}>
+                >
                     {text}
+                    {/* <span onClick={this.handleResize} className="dot_top_right.hidden no-cursor"/> 
+                    <span className="dot_top_left.hidden"/>
+                    <span className="dot_bottom_right.hidden"/>
+                    <span className="dot_bottom_left.hidden"/> */}
                 </div>
             </Draggable>
         );

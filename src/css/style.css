@@ -95,9 +95,29 @@
 }
 
 
-  .dummy{
-    fill:white;stroke:black;stroke-width:2;opacity:0.5
-  }
+.dummy{
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    text: null;
+    background-color: #dfafaf;
+    font-size: 10px;
+    border: solid;
+    border-color: #4CAF50;
+    border-width: 1px;
+    border-radius: 0px;
+    top: 60px;
+    left: 10px;
+    resize:both;
+    overflow:hidden;
+    /* ele.resizable({
+      handles: 'n, e, s, w'
+   });  */
+    /* max-height: fit-content;
+    max-width: fit-content; */
+    
+}
+
 
 
 .number_input{
@@ -118,3 +138,98 @@
   cursor: not-allowed;
 }
 
+
+.dot_top_left{
+  visibility: visible;
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: yellowgreen;
+  border-radius: 10px;
+  top: -5px;
+  left: -5px;
+}
+.dot_top_left.hidenn{
+  visibility: visible;
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: yellowgreen;
+  border-radius: 10px;
+  top: -5px;
+  left: -5px;
+}
+
+
+
+.dot_top_right{
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: yellowgreen;
+  border-radius: 10px;
+  top: -5px;
+  right: -5px;
+}
+.dot_bottom_left{
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: yellowgreen;
+  border-radius: 10px;
+  bottom: -5px;
+  left: -5px;
+}
+.dot_bottom_right{
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: yellowgreen;
+  border-radius: 10px;
+  bottom: -5px;
+  right: -5px;
+}
+
+
+/* 
+
+function(e) {
+  e.preventDefault();
+  original_width = parseFloat(getComputedStyle(element, null).getPropertyValue('width').replace('px', ''));
+  original_height = parseFloat(getComputedStyle(element, null).getPropertyValue('height').replace('px', ''));
+  original_x = element.getBoundingClientRect().left;
+  original_y = element.getBoundingClientRect().top;
+  original_mouse_x = e.pageX;
+  original_mouse_y = e.pageY;
+  window.addEventListener('mousemove', resize);
+  window.addEventListener('mouseup', stopResize);
+}
+ */
+
+
+
+
+/* function makeResizableDiv(div) {
+  const element = document.querySelector(div);
+  const resizers = document.querySelectorAll(div + ' .resizer')
+  for (let i = 0;i < resizers.length; i++) {
+    const currentResizer = resizers[i];
+    currentResizer.addEventListener('mousedown', function(e) {
+      e.preventDefault()
+      window.addEventListener('mousemove', resize)
+      window.addEventListener('mouseup', stopResize)
+    })
+    
+    function resize(e) {
+      if (currentResizer.classList.contains('bottom-right')) {
+        element.style.width = e.pageX - element.getBoundingClientRect().left + 'px'
+      }
+    }
+    
+    function stopResize() {
+      window.removeEventListener('mousemove', resize)
+    }
+  }
+}
+
+makeResizableDiv('.resizable') */
