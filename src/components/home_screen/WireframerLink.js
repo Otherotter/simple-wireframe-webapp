@@ -9,6 +9,7 @@ class WireframerLink extends React.Component {
     
     render() {
         const projects = this.props.projects;
+        
         return (
             <div className="">
                 <div class="row row-cols-1 row-cols-md-4">
@@ -48,7 +49,7 @@ class WireframerLink extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        
+        currentMember: state.firestore.ordered.member,
         auth: state.firebase.auth,
     };
 };

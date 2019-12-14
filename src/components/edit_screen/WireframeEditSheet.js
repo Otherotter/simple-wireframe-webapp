@@ -23,6 +23,7 @@ class WireframeEditSheet extends React.Component {
         this.state = {
             itemSelected: false,
             itemComponent: null,
+            itemStyle: null,
         }
     }
 
@@ -71,7 +72,7 @@ class WireframeEditSheet extends React.Component {
         }
         if(this.state.itemSelected === true) this.deselect()
         console.log("handleComponentClick(element)");
-        console.log();
+        console.log(element.target.style);
         // for(let i = element.target.children.length-1; i >= 0 ; i--){
         //     if(element.target.children[i].tagName === "SPAN" ){
         //         var className = element.target.children[i].className;
@@ -95,16 +96,33 @@ class WireframeEditSheet extends React.Component {
         dot_bottom_right.setAttribute(elementType, "dot_bottom_right");
         dot_bottom_right.addEventListener(onEvent, this.handleResize); 
         element.target.append(dot_top_left, dot_top_right, dot_bottom_left, dot_bottom_right)
-        // console.log(element.target.style.height);
-        // console.log(element.target.style.width);
-        // console.log(element.target.style.font);
-        // console.log(element.target.style.background);
-        // console.log(element.target.style.border);
+        
+        console.log(element.target.firstChild);
+        let text = null
+        if(element.target.firstChild.nodeName === "#text"){
+            text = element.target.firstChild.nodeValue;
+        }
+        console.log(element.target.style.fontSize);
+        console.log(element.target.style.backgroundColor.hex);
+        console.log(element.target.style.borderColor);
+        console.log(element.target.style.borderWidth);
+        console.log(element.target.style.borderRadius);
+        let style ={
+            "fontSize": element.target.style.fontSize,
+            "backgroundColor": element.target.style.backgroundColor,
+            "borderColor": element.target.style.borderColor,
+            "borderWidth": element.target.style.borderWidth,
+            "borderRadius": element.target.style.borderRadius,
+            "text": text
+        }
+        
+
         // let style = []
         // console.log(element.target.childNodes);
         // console.log("" +element.target.firstChild.data);
         this.setState({itemSelected: true})
         this.setState({itemComponent: element.target})
+        this.setState({itemStyle: style})
     }
 
     deselect(element) {
@@ -201,7 +219,7 @@ class WireframeEditSheet extends React.Component {
                                         handleResize={this.handleResize}
                                         /> 
                                     ))}
-                                    <Draggable
+                                    {/* <Draggable
                                     bounds="parent"
                                     cancel="span"
                                     >
@@ -216,11 +234,8 @@ class WireframeEditSheet extends React.Component {
                                             <span className="dot_bottom_left"/>
                                         </div>
                                     
-                                    </Draggable>
-                                    <div className="component_container" >
-
-                        
-                                    </div>
+                                    </Draggable> */}
+                                    
 
                                 </div>
                             </div> 
@@ -255,6 +270,7 @@ class WireframeEditSheet extends React.Component {
                         <Properties 
                             itemSelected={this.state.itemSelected}
                             itemComponent={this.state.itemComponent}
+                            itemStyle={this.state.itemStyle}
                         />
                     </div>
                 </div>

@@ -118,6 +118,22 @@
     
 }
 
+.colorpicker{
+
+  height:0.6cm;
+  width: 2cm;
+  font-size: 13px;
+  border-radius: 10px;
+  background: white;
+}
+.numberpicker{
+  height:0.6cm;
+  width: 1cm;
+  font-size: 13px;
+  border-radius: 10px;
+  background: white;
+}
+
 
 
 .number_input{
@@ -142,9 +158,12 @@
 .dot_top_left{
   visibility: visible;
   position: absolute;
-  height: 10px;
-  width: 10px;
-  background-color: yellowgreen;
+  height: 15px;
+  width: 15px;
+  background-color: rgb(0, 255, 64);
+  border: solid;
+  border-color: #ff00d4;
+  border-width: 2px;
   border-radius: 10px;
   top: -5px;
   left: -5px;
@@ -152,9 +171,12 @@
 .dot_top_left.hidenn{
   visibility: visible;
   position: absolute;
-  height: 10px;
-  width: 10px;
-  background-color: yellowgreen;
+  height: 15px;
+  width: 15px;
+  background-color: rgb(0, 255, 64);
+  border: solid;
+  border-color: #ff00d4;
+  border-width: 2px;
   border-radius: 10px;
   top: -5px;
   left: -5px;
@@ -164,30 +186,45 @@
 
 .dot_top_right{
   position: absolute;
-  height: 10px;
-  width: 10px;
-  background-color: yellowgreen;
+  height: 15px;
+  width: 15px;
+  background-color: rgb(0, 255, 64);
+  border: solid;
+  border-color: #ff00d4;
+  border-width: 2px;
   border-radius: 10px;
   top: -5px;
   right: -5px;
 }
 .dot_bottom_left{
   position: absolute;
-  height: 10px;
-  width: 10px;
-  background-color: yellowgreen;
+  height: 15px;
+  width: 15px;
+  background-color: rgb(0, 255, 64);
+  border: solid;
+  border-color: #ff00d4;
+  border-width: 2px;
   border-radius: 10px;
   bottom: -5px;
   left: -5px;
 }
 .dot_bottom_right{
   position: absolute;
-  height: 10px;
-  width: 10px;
-  background-color: yellowgreen;
+  height: 15px;
+  width: 15px;
+  background-color: rgb(0, 255, 64);
+  border: solid;
+  border-color: #ff00d4;
+  border-width: 2px;
   border-radius: 10px;
   bottom: -5px;
   right: -5px;
+}
+
+.addwireframe:hover{
+  background: beige;
+  color: coral;
+
 }
 
 

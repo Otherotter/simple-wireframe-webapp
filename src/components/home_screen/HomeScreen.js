@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { NavLink, Redirect, Link} from 'react-router-dom';
 import { firestoreConnect, firebaseConnect } from 'react-redux-firebase';
 import WireframerLink  from './WireframerLink';
+import { getFirestore } from 'redux-firestore';
 
 
 class HomeScreen extends React.Component {
@@ -164,11 +165,16 @@ class HomeScreen extends React.Component {
         if (!this.props.auth.uid) {
             return <Redirect to="/Login" />;
         }
+        const currentMember = this.props.currentMember;    
+        console.log(this.props.auth)
+        const fireStore = getFirestore();
+        
+        console.log(fireStore.collection("users").doc())
         return (
 
             <div className="container-sm">
                <h5>HomeScreen</h5> 
-               <div class="card text-dark text-center border-secondary mb-3" onClick={this.handleAddWireframe}>
+               <div class="addwireframe card text-dark text-center border-secondary mb-3" onClick={this.handleAddWireframe}>
                     <div class="card-header">
                         <p>Add Wireframe</p>
                     </div>
@@ -187,6 +193,7 @@ class HomeScreen extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        currentMember: state.firestore.ordered.member,
         auth: state.firebase.auth
     };
 };
@@ -194,7 +201,7 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-      { collection: 'todoLists', orderBy:['timestamp', 'desc']},
+      { collection: 'member'},
     ]),
 )(HomeScreen);
 

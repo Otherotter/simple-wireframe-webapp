@@ -1,5 +1,7 @@
 import * as actionCreators from '../actions/actionCreators.js'
 
+
+
 export const loginHandler = ({ credentials, firebase }) => (dispatch, getState) => {
     firebase.auth().signInWithEmailAndPassword(
       credentials.email,
@@ -20,6 +22,7 @@ export const logoutHandler = (firebase) => (dispatch, getState) => {
 
 export const registerHandler = (newUser, firebase) => (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
+    let userID = parseInt(Math.random() * 100000000);
     console.log(newUser.email === "")
     console.log("registerHandler() " + newUser.email + ", " + newUser.password);
     firebase.auth().createUserWithEmailAndPassword(
@@ -29,6 +32,7 @@ export const registerHandler = (newUser, firebase) => (dispatch, getState, { get
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         initials: `${newUser.firstName[0]}${newUser.lastName[0]}`,
+        member: userID, 
     })).then(() => {
         dispatch(actionCreators.registerSuccess);
     })
@@ -41,10 +45,11 @@ export const registerHandler = (newUser, firebase) => (dispatch, getState, { get
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         administrator: false,
-        projects: []
+        projects: [],
+        member: userID, 
     }).then(docRef => {
       console.log("Document written with ID: ", docRef.id);
     }).catch((err) => {
         console.log(err);
-    });
+    }) 
 };

@@ -1,6 +1,6 @@
 #document-area{
-    height: 500px;
-    width: 760px;    
+    height: 600px;
+    width: 800px;    
 }
 
 #wireframer{
@@ -18,6 +18,19 @@
   position: relative;
   left: default;
 }
+
+.popover {
+  
+ 
+  position: inherit !important;
+  /* top: 3cm!important; */
+  /* left: 2cm!important; */
+}
+.pop{
+  position: absolute !important;
+  left: -10cm!important;
+}
+
 
 .dimension_input{
   height:0.7cm;
