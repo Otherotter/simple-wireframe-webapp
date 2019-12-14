@@ -5,171 +5,81 @@ import { NavLink, Redirect, Link} from 'react-router-dom';
 import { firestoreConnect, firebaseConnect } from 'react-redux-firebase';
 import WireframerLink  from './WireframerLink';
 import { getFirestore } from 'redux-firestore';
+import { newListHandler } from '../../store/database/asynchHandler';
 
 
 class HomeScreen extends React.Component {
     constructor(){
         super();
-        this.handleDeleteList = this.handleDeleteList.bind(this);
-
-        this.state = {
-            "projects": [
-                {
-                    "name": "Photograph portfolio",
-                    "key": 0,
-                    "height":1000,
-                    "width": 1000,
-                    "timestamp": 0,
-                    "component": [
-                        {
-                            "control": "container",
-                            "properties": { 
-                                "text" : "None",
-                                "font_size" : "None",
-                                "background_color" : "#FFFFFFFF",
-                                "border_color" : "#FFFFFFFF",
-                                "border_thickness" : 1,
-                                "border_radius" : 1,
-                                "width": 100,
-                                "height": 100,
-                                "margin-top": 0
-                            }
-                        },
-                        {
-                            "control": "label",
-                            "properties": { 
-                                "text" : "Hello",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#AAAA3333",
-                                "border_thickness" : 2,
-                                "border_radius" : 2,
-                                "width": 10,
-                                "height": 10,
-                                "margin-top": 10
-                            }
-
-                        },
-                        {
-                            "control": "button",
-                            "properties": { 
-                                "text" : "CLICK",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#AAAA3333",
-                               	"border_thickness" : 2,
-                                "border_radius" : 2,
-                                "width": 10,
-                                "height": 10,
-                                "margin-top": 20
-                            }
-
-                        },
-                        {
-                            "control": "textfield",
-                            "properties": { 
-                                "text" : "TEXTFIELD",
-                                "font_size" : 12,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#BBBBB111",
-                               	"border_thickness" : 2,
-                                "border_radius" : 2,
-                                "width": 100,
-                                "height": 100,
-                                "margin-top": 30
-                            }
-
-                        }
-                    ]
-
-                }, 
-                { 
-                    "name": "Spider-Man Rescue Thread",
-                    "key": 1,
-                    "height":1000,
-                    "width": 1000,
-                    "timestamp": 1,
-                    "component": [
-                        {
-                            "control": "container",
-                            "properties": { 
-                                "text" : "None",
-                                "font_size" : "None",
-                                "background_color" : "#FFFFFFFF",
-                                "border_color" : "#101010101",
-                                "border_thickness" : 1,
-                                "border_radius" : 1,
-                                "width": 100,
-                                "height": 100,
-                                "margin-top": 0
-                            }
-                        },
-                        {
-                            "control": "label",
-                             "properties": { 
-                                "text" : "Hello",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#AAAA3333",
-                                "border_thickness" : 3,
-                                "border_radius" : 3,
-                                "width": 10,
-                                "height": 10,
-                                "margin-top": 10
-                            }
-
-                        },
-                        {
-                            "control": "button",
-                            "properties": { 
-                                "text" : "CLICK",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#A5F33C83",
-                               	"border_thickness" : 2,
-                                "border_radius" : 2,
-                                "width": 10,
-                                "height": 10,
-                                "margin-top": 20
-                            }
-
-                        }
-                    ]
-                }
-            ]
+        // this.sendPossibleDeletedWireframe = this.sendPossibleDeletedWireframe.bind(this);
+        this.state ={
+            "poetentialToBeDeleted": null
         }
     }
-    handleAddWireframe(){
-        console.log("handleWireframe()"); 
-        // let newListData = {
-        //     name: 'Unnamed todolist',
-        //     owner: 'Unknown owner',
-        //     items: [],
-        //     time: Date.now(),
-        // }
-        // const fireStore = getFirestore();
-        // let newList = fireStore.collection("todoLists").doc();
-        // newList.set(newListData);
 
+    handleAddWireframe = () =>{
+        let newListData = {
+            "name": "Unknown",
+            "height":"500px",
+            "width": "500px",
+            "timestamp": 0,
+            "components": []
+        }
+        const fireStore = getFirestore();
+        let newList = fireStore.collection("members").doc();
+        newList.set(newListData);
+        
         // this.props.history.push({
-        //     pathname: "todoList/" + newList.id,
+        //     pathname: "/Edit/" + newList.id,
         //     key: newList.id,
+    
         // });
     }
-    handleDeleteList(event) {
-        event.stopPropagation();
-        console.log("handleDeleteList(event)")
+
+    sendPossibleDeletedWireframe = (event, wireframeid) =>{
+        console.log(wireframeid)
+        this.setState({poetentialToBeDeleted: wireframeid})
+    }
+
+    deleteWireframe = (event) =>{
+        const fireStore = getFirestore();
+        console.log(this.state.poetentialToBeDeleted)
+        let id = this.state.poetentialToBeDeleted
+    
+        getFirestore().collection("members").doc(id).delete().then(function() {
+            console.log(this.props.todoList.id + " successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+        // fireStore.collection('members').doc(event.id).delete();
+        this.setState({poetentialToBeDeleted: event.id})
     }
 
     render() {
+
         if (!this.props.auth.uid) {
             return <Redirect to="/Login" />;
         }
-        const currentMember = this.props.currentMember;    
-        console.log(this.props.auth)
-        const fireStore = getFirestore();
+        // var user = getFirestore()
+        // console.log(user)
+        // var member = null
+        // let members = this.props.members;
+        // const fireStore = getFirestore();
+        // console.log(this.props.auth.email)
+        // for(var item in members){
+        //     if(members[item].email === this.props.auth.email){
+        //         console.log(members[item].member)
+        //         member = members[item];
+        //         console.log(member)
+        //         break;
+        //     }
+        // }
+        // this.setState({user:member})
+        // console.log(member)
+        // console.log(members)
+        // const clone = JSON.parse(JSON.stringify(member.projects));
+        // console.log(clone)
         
-        console.log(fireStore.collection("users").doc())
         return (
 
             <div className="container-sm">
@@ -185,7 +95,27 @@ class HomeScreen extends React.Component {
                         </svg>
                     </div>
                 </div>
-                <WireframerLink projects={this.state.projects}/> 
+                <WireframerLink handleDeleteList={this.sendPossibleDeletedWireframe}/> 
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog text-dark" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Wireframe</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete this Wireframe?</p>
+                                    <p className="font-weight-bold">This action cannot be reversed</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" onClick={this.deleteWireframe}>Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
             </div>
         );
     }
@@ -193,15 +123,15 @@ class HomeScreen extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentMember: state.firestore.ordered.member,
         auth: state.firebase.auth
     };
 };
 
+
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-      { collection: 'member'},
+      { collection: 'members'},
     ]),
 )(HomeScreen);
 

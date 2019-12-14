@@ -46,6 +46,15 @@
     background-color: rgba(237, 241, 217, 0.89);
   }
   
+  #wireframe_name{
+    height: 0.7cm;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+  #wireframe_name:hover{
+    height: 0.7cm;  
+    font-size: 12px
+  }
 
   #intial{
     

@@ -28,7 +28,6 @@ class WireframeEditSheet extends React.Component {
     }
 
 
-
     handleResize(element){
         element.stopPropagation();
         console.log("handleResize(element)")
@@ -246,7 +245,7 @@ class WireframeEditSheet extends React.Component {
                                 type="number" 
                                 id="wireframe_height"
                                 min="0"
-                                max="495"
+                                max="600"
                                 defaultValue={this.props.height.slice(0, this.props.height.indexOf("p"))}
                                 onChange={this.props.handleDimensionChange}
 
@@ -255,7 +254,7 @@ class WireframeEditSheet extends React.Component {
                                 type="number" 
                                 id="wireframe_width"
                                 min="0"
-                                max="755"
+                                max="800"
                                 defaultValue={this.props.width.slice(0,this.props.width.indexOf("p"))}
                                 onChange={this.props.handleDimensionChange}   
                             />

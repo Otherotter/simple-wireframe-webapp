@@ -2,7 +2,7 @@ const initState = {
     todoLists: []
 };
 
-const projectReducer = (state = initState, action) => {
+const todoListReducer = (state = initState, action) => {
     switch (action.type) {
         /* IF YOU HAVE ANY TODO LIST EDITING REDUCERS ADD THEM HERE */ 
         default:
@@ -11,4 +11,4 @@ const projectReducer = (state = initState, action) => {
     }
 };
 
-export default projectReducer;
+export default todoListReducer;

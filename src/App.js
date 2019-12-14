@@ -26,12 +26,11 @@ class App extends Component{
           <Navbar />
           <Switch>
             <Route exact path="/Home" component={HomeScreen}/> 
-            <Route path="/Login" component={LoginScreen} />
-            <Route path="/Home/name+id" component={HomeScreen} />  
+            <Route path="/Login" component={LoginScreen} /> 
             <Route path="/Edit/" component={EditScreen} />
             <Route path="/Register" component={RegisterScreen} /> 
             <Route path="/DatabaseTester" component={DatabaseTester} />
-            <Route any path="/Home" component={HomeScreen} />
+            <Route any path="/" component={HomeScreen} />
             {/*  />
             
             
