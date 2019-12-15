@@ -31,8 +31,7 @@ class HomeScreen extends React.Component {
         
         // this.props.history.push({
         //     pathname: "/Edit/" + newList.id,
-        //     key: newList.id,
-    
+        //     state: { wireframe: this.props.projects}}
         // });
     }
 
@@ -45,7 +44,6 @@ class HomeScreen extends React.Component {
         const fireStore = getFirestore();
         console.log(this.state.poetentialToBeDeleted)
         let id = this.state.poetentialToBeDeleted
-    
         getFirestore().collection("members").doc(id).delete().then(function() {
             console.log(this.props.todoList.id + " successfully deleted!");
         }).catch(function(error) {

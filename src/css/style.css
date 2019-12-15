@@ -128,12 +128,13 @@
 }
 
 .colorpicker{
-
   height:0.6cm;
-  width: 2cm;
-  font-size: 13px;
+  width: 2.5cm;
+  font-size: 10px;
   border-radius: 10px;
   background: white;
+  color: black;
+
 }
 .numberpicker{
   height:0.6cm;

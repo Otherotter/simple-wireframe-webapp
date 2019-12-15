@@ -19,9 +19,7 @@
 }
 
 .popover {
-  
- 
-  position: inherit !important;
+  position: absolute !important;
   /* top: 3cm!important; */
   /* left: 2cm!important; */
 }

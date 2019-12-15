@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import {Redirect} from 'react-router-dom';
+
 import { firestoreConnect, firebaseConnect } from 'react-redux-firebase';
 import Draggable from 'react-draggable';
 import { Resizable, ResizableBox } from 'react-resizable';
@@ -10,8 +11,8 @@ import WireframeComponent from './WireframeComponent';
 import Properties from './Properties';
 
 class WireframeEditSheet extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
          // This binding is necessary to make `this` work in the callback
         // this.handleElementDrag = this.handleElementDrag.bind(this);
         // this.dragMouseDown = this.dragMouseDown.bind(this);
@@ -24,6 +25,9 @@ class WireframeEditSheet extends React.Component {
             itemSelected: false,
             itemComponent: null,
             itemStyle: null,
+            itemSelectedNumber: -1,
+
+
         }
     }
 
@@ -61,9 +65,89 @@ class WireframeEditSheet extends React.Component {
        
     }
 
+    keyboardEvent = (e) =>{
+        e.stopPropagation()
+        
+        // console.log(e);
+        // console.log(e.ctrlKey);
+        // console.log(e.keyCode);
+        // console.log(e.key);
+
+        let components = this.props.components;
+        // console.log("handleAddComponent(element)");
+        // console.log(this.state.itemComponent);
+        // console.log(this.state.itemComponent.firstChild.data);
+        // console.log(this.state.itemComponent.id);
+        // console.log(this.state.itemComponent.style);
+        // console.log(this.state.itemSelected);
+        if(e.key ==="Backspace" && window.event.target.tagName !== "INPUT"){
+            e.preventDefault()
+            console.log("Delete")
+            console.log(window.event)
+            console.log(this.props.components);
+            console.log(this.state.itemComponent);
+            var thenum = this.state.itemComponent.id.replace(/^\D+/g, ''); // replace all leading non-digits with nothing
+            console.log("This is the number: " + thenum);
+            if(this.props.components.length === 0){
+                console.log("Deleted list")
+               this.props.components.pop() 
+            }
+            else if(this.props.components.length >= 1){
+                console.log("Deleted list")
+                this.props.components.splice(thenum, 1);
+            }
+            this.deselect();
+            this.setState({docChange: true})
+            for(var i in this.props.components){
+                this.props.components[i].id = i;
+            }
+        }
+        else if(e.key ==='d' && e.ctrlKey===true){
+            console.log(" Duplicate")
+            let transfrom = this.state.itemComponent.style.transform.substring(10,this.state.itemComponent.style.transform.length-1);
+            let x = parseInt(transfrom.slice(0,transfrom.indexOf("p")))
+            let y = transfrom.slice(transfrom.indexOf("x")+1);;
+            if(y.length !== 0){
+                y = parseInt(y.slice(2,y.indexOf("p")))   
+            }
+            else{
+                y = 0;
+            }
+            components.push({
+                            "control": this.state.itemComponent.className,
+                            "id": components.length,
+                            "properties": { 
+                                "position": "absolute",
+                                "height": this.state.itemComponent.style.height,
+                                "width": this.state.itemComponent.style.width,
+                                "text": this.state.itemComponent.firstChild.data,
+                                "background-color": this.state.itemComponent.style.backgroundColor,
+                                "color": this.state.itemComponent.style.color,
+                                "font-size": this.state.itemComponent.style.fontSize,
+                                "border": this.state.itemComponent.style.border,
+                                "border-color": this.state.itemComponent.style.borderColor,
+                                "border-width": this.state.itemComponent.style.borderWidth,
+                                "border-radius": this.state.itemComponent.style.borderRadius,
+                                "x": x - 10,
+                                "y": y + 10,
+                                // "x": parseInt(this.state.itemComponent.style.x.slice(0,this.state.itemComponent.style.x.indexOf("p"))) - 1,
+                                // "y": parseInt(this.state.itemComponent.style.y.slice(0,this.state.itemComponent.style.y.indexOf("p"))) + 1 ,
+                                "resize":"both",
+                                "overflow":"hidden",
+                            }
+            });
+            this.deselect();
+            console.log(this.props.components)
+        }    
+
+        
+    }
+
+
+
     handleSelect(element){
         element.stopPropagation();
-        // console.log(element.target)
+        console.log(element.target)
         // console.log(this.state.itemComponent)
         if(element.target === this.state.itemComponent){
             console.error("RETIRN")
@@ -95,17 +179,19 @@ class WireframeEditSheet extends React.Component {
         dot_bottom_right.setAttribute(elementType, "dot_bottom_right");
         dot_bottom_right.addEventListener(onEvent, this.handleResize); 
         element.target.append(dot_top_left, dot_top_right, dot_bottom_left, dot_bottom_right)
+
+        document.body.addEventListener("keydown", this.keyboardEvent)
         
-        console.log(element.target.firstChild);
+        // console.log(element.target.firstChild);
         let text = null
         if(element.target.firstChild.nodeName === "#text"){
             text = element.target.firstChild.nodeValue;
         }
-        console.log(element.target.style.fontSize);
-        console.log(element.target.style.backgroundColor.hex);
-        console.log(element.target.style.borderColor);
-        console.log(element.target.style.borderWidth);
-        console.log(element.target.style.borderRadius);
+        // console.log(element.target.style.fontSize);
+        // console.log(element.target.style.backgroundColor.hex);
+        // console.log(element.target.style.borderColor);
+        // console.log(element.target.style.borderWidth);
+        // console.log(element.target.style.borderRadius);
         let style ={
             "fontSize": element.target.style.fontSize,
             "backgroundColor": element.target.style.backgroundColor,
@@ -140,6 +226,7 @@ class WireframeEditSheet extends React.Component {
             // }     
             this.setState({itemSelected:false})
             this.setState({itemComponent:null})
+            document.body.removeEventListener("keydown", this.keyboardEvent)
         }
     }
 
@@ -147,18 +234,35 @@ class WireframeEditSheet extends React.Component {
         if(this.state.itemSelected === true) this.deselect()     
         let components = this.props.components;
         console.log("handleAddComponent(element)");   
-        
         components.push({
-            "control": element.target.className,
+                            "control": element.target.className,
                             "id": components.length,
                             "properties": { 
+                                "position": "absolute",
+                                "height": "50px",
+                                "width": "50px",
+                                "text": "Hello",
+                                "background-color": "#FFFFFF",
+                                "color": "#000000",
+                                "font-size": "10px",
+                                "border": "solid",
+                                "border-color": "#FFFFFF",
+                                "border-width": "0px",
+                                "border-radius": "0px",
+                                "top": "0px",
+                                "left": "0px",
+                                "x": 0,
+                                "y": 0,
+                                "resize":"both",
+                                "overflow":"hidden",
     
                             }
         });
         console.log(components[components.length - 1])
         // this.setState({itemSelected: true})
         this.setState({itemComponent: null})
-        
+        this.setState({docChange: true})
+        this.props.tigger(true);
     }   
 
     render() {
@@ -234,7 +338,17 @@ class WireframeEditSheet extends React.Component {
                                         </div>
                                     
                                     </Draggable> */}
-                                    
+                                    {/* <Rnd
+                                        default={{
+                                            x: 0,
+                                            y: 0,
+                                            width: 320,
+                                            height: 200,
+                                        }}
+                                        >
+                                        Rnd
+                                        </Rnd>
+                                     */}
 
                                 </div>
                             </div> 
@@ -270,6 +384,7 @@ class WireframeEditSheet extends React.Component {
                             itemSelected={this.state.itemSelected}
                             itemComponent={this.state.itemComponent}
                             itemStyle={this.state.itemStyle}
+                            tigger={this.props.tigger}
                         />
                     </div>
                 </div>

@@ -17,6 +17,8 @@ class EditScreen extends Component {
         this.handleClose = this.handleClose.bind(this);
         this.handleCloseExit = this.handleCloseExit.bind(this);
         this.handleCloseCancel = this.handleCloseCancel.bind(this);
+        this.handleSave = this.handleSave.bind(this);
+        
         
         // console.log(props.location.state.wireframe.components)
         this.state = {
@@ -29,17 +31,30 @@ class EditScreen extends Component {
         }
 
     }
+    tigger = (c)=>{
+        this.setState({docChange: true})
+    }
 
     handleZoomIn(){
-        let zoomIn = document.getElementById("zoom-out");
+        let zoomOut = document.getElementById("zoom-out");
         let big = document.getElementById("big");
         // this.props.width.slice(0,this.props.width.indexOf("p"))
         let newHeight = big.style.height.slice(0,big.style.height.indexOf("p")) * 2;
         let newWidth = big.style.width.slice(0,big.style.width.indexOf("p")) * 2;
         big.style.height = newHeight+"px";
         big.style.width = newWidth+"px"; 
-        zoomIn.removeAttribute("class","disabled");
-        zoomIn.setAttribute("class","nav-item");
+        zoomOut.style.opacity = "1"
+        zoomOut.style.cursor ="pointer"
+        zoomOut.removeAttribute("class","disabled");
+        zoomOut.setAttribute("class","nav-item");
+        console.log(big)
+        for(var i = 0; i < big.childElementCount; i++){
+            var node = big.children[i].style;
+            let newHeight = node.height.slice(0,node.height.indexOf("p")) * 2;
+            let newWidth = node.width.slice(0,node.width.indexOf("p")) * 2;
+            node.height = newHeight+"px";
+            node.width = newWidth+"px"; 
+        }
     }
 
     handleZoomOut(){
@@ -53,11 +68,22 @@ class EditScreen extends Component {
         let newHeight = big.style.height.slice(0,big.style.height.indexOf("p")) / 2;
         let newWidth = big.style.width.slice(0,big.style.width.indexOf("p")) / 2;
         if(originalHeight === this.state.height && originalWidth ===this.state.width){
-            zoomOut.style.opacity = "5px"
+            zoomOut.style.opacity = "0.1"
         }
         else{
             big.style.height = newHeight+"px";
             big.style.width = newWidth+"px";
+            for(var i = 0; i < big.childElementCount; i++){
+                var node = big.children[i].style;
+                let newHeight = node.height.slice(0,node.height.indexOf("p")) / 2;
+                let newWidth = node.width.slice(0,node.width.indexOf("p")) / 2;
+                node.height = newHeight+"px";
+                node.width = newWidth+"px"; 
+            }
+            if(big.style.height === this.state.height && big.style.width  ===this.state.width){
+                zoomOut.style.opacity = "0.1"
+                zoomOut.style.cursor ="not-allowed"
+            }
         }
     }
 
@@ -86,10 +112,6 @@ class EditScreen extends Component {
         }
     }
 
-    handleSave(){
-
-    }
-
     handleClose(){
         console.log("handleClose()")
         if(this.state.docChange === true){
@@ -105,9 +127,8 @@ class EditScreen extends Component {
                 pathname: "/Home/",
             });
         }
-
-        
     }
+
     handleCloseCancel(){
         let outsidediv = document.getElementById("close_dialog")
         let insidediv = document.getElementById("are_your_sure_dialog")
@@ -123,19 +144,83 @@ class EditScreen extends Component {
 
     handleNameChange = (event) => {
         let newString = event.target.value;
-        // if(newString === "") newString = "Unknown"
-        // getFirestore().collection("members").doc(this.props.location.state.wireframe.id).update({
-        //   name: newString
-        // })
-        // .then(function() {
-        //     console.log("Document successfully updated!");
-        // })
-        // .catch(function(error) {
-        //     // The document probably doesn't exist.
-        //     console.error("Error updating document: ", error);
-        // });  
+        
         this.setState({name: newString})
         this.setState({docChange: true})
+    }
+
+    handleSave(){
+        console.log(this.state.name);
+        console.log(this.state.height);
+        console.log(this.state.width);
+        console.log(this.state.timestamp);
+        console.log(this.state.components);
+        let newComponents = []
+        for(var i in this.state.components){
+            let id = document.getElementById(this.state.components[i].control + i);
+            console.log(id.style.transform);
+            let transfrom = id.style.transform.substring(10,id.style.transform.length-1);
+            let x = parseInt(transfrom.slice(0,transfrom.indexOf("p")))
+            let y = transfrom.slice(transfrom.indexOf("x")+1);;
+            if(y.length !== 0){
+                y = parseInt(y.slice(2,y.indexOf("p")))   
+            }
+            else{
+                y = 0;
+            }
+
+             
+            // console.log(y);
+            // console.log(x)
+            // console.log(id.style.x)
+            // console.log(id.style.y)
+            // console.log(id.style.deltaX)
+        
+            let component = {
+                "control": this.state.components[i].control,
+                "id": i,
+                "properties": { 
+                    "position": "absolute",
+                    "height": id.style.height,
+                    "width": id.style.width,
+                    "text": id.firstChild.data,
+                    "background-color": id.style.backgroundColor,
+                    "color": id.style.color,
+                    "font-size": id.style.fontSize,
+                    "border": id.style.border,
+                    "border-color": id.style.borderColor,
+                    "border-width": id.style.borderWidth,
+                    "border-radius": id.style.borderRadius,
+                    "x": x,
+                    "y": y,
+                    "resize":"both",
+                    "overflow":"hidden",
+
+                
+            }}
+            newComponents.push(component)
+            // console.log(this.state.components[i].properties); 
+            console.log(component); 
+
+        }
+        console.log(newComponents)
+        let newString = this.state.name;
+        if(newString === "") newString = "Unknown"
+        getFirestore().collection("members").doc(this.props.location.state.wireframe.id).update({
+          name: newString,
+          height: this.state.height,
+          width: this.state.width,
+          timestamp: this.state.timestamp,
+          components: newComponents
+        })
+        .then(function() {
+            console.log("Document successfully updated!");
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });  
+        this.setState({docChange: false})
     }
 
     
@@ -174,10 +259,10 @@ class EditScreen extends Component {
                             <line x1="8" y1="11" x2="14" y2="11"/>
                         </svg>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-toggle="modal" data-target=".bd-example-modal-sm" onClick={this.handleSave}>
                         <a>Save</a>
                     </li>
-                    <li class="nav-item"  onClick={this.handleClose}>
+                    <li class="nav-item" onClick={this.handleClose}>
                         <a>Close</a>
                     </li>
                 
@@ -189,6 +274,8 @@ class EditScreen extends Component {
                     components= {this.state.components}
                     handleDimensionChange ={this.handleDimensionChange} 
                     handleDimensionSubmit = {this.handleDimensionSubmit}
+                    docChange = {this.state.docChange}
+                    tigger = {this.tigger}
                 />
                 <div id="close_dialog_hidden">
                     <div id="are_your_sure_dialog_hidden">
@@ -199,6 +286,20 @@ class EditScreen extends Component {
                         <btn className="are_your_sure_buttons" onClick={this.handleCloseCancel}>Cancel</btn>   
                         <btn className="are_your_sure_buttons" onClick={this.handleCloseExit}>Close</btn>   
                     </div>
+                </div>
+            
+
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Saved</h5>
+                    </div>
+                        <div class="modal-body">
+                            Wireframe has been saved!
+                        </div>
+                    </div>
+               
                 </div>
                
             </div>
