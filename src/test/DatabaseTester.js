@@ -23,30 +23,28 @@ class DatabaseTester extends React.Component {
 
     handleReset = () => {
         const fireStore = getFirestore();
+        // todoJson.members.forEach(wireframe => {
+        //     fireStore.collection('members').add({
+        //             firstName: wireframe.firstName,
+        //             lastName: wireframe.lastName,
+        //             id: wireframe.id,
+        //             administrator: wireframe.administrator,
+        //             projects: wireframe.projects,
+        //         }).then(() => {
+        //             console.log("DATABASE RESET");
+        //         })
+        // });
+
         todoJson.members.forEach(wireframe => {
             fireStore.collection('members').add({
-                    firstName: wireframe.firstName,
-                    lastName: wireframe.lastName,
-                    id: wireframe.id,
-                    administrator: wireframe.administrator,
-                    projects: wireframe.projects,
+                    height: wireframe.height,
+                    width: wireframe.width,
+                    timestamp: wireframe.timestamp,
+                    name: wireframe.name,
+                    components: wireframe.components,
                 }).then(() => {
                     console.log("DATABASE RESET");
                 })
-                // .firebase.auth().createUserWithEmailAndPassword(
-                //     newUser.email,
-                //     newUser.password,
-                // ).then(resp => firestore.collection('users').doc(resp.user.uid).set({
-                //     firstName: newUser.firstName,
-                //     lastName: newUser.lastName,
-                //     initials: `${newUser.firstName[0]}${newUser.lastName[0]}`,
-                // })).then(() => {
-                //     dispatch(actionCreators.registerSuccess);
-                // })
-                // .catch((err) => {
-                //     console.log("error()");
-                //     dispatch(actionCreators.registerError);
-                // });   
         });
     }
 
@@ -148,10 +146,10 @@ class DatabaseTester extends React.Component {
                         <button>{todoList.name}</button>
                     </Link>
                 ))} */}
-                <button onClick={this.handleAddList}>Add List Peter</button>
+                {/* <button onClick={this.handleAddList}>Add List Peter</button>
                 <button onClick={this.handleUpdateListFields}>Update TextField of Peter </button>
                 <button onClick={this.handleUpdateCollection}>Update Card of Peter </button>
-                <button onClick={this.handleDeleteList}>Delete List Peter Database</button>
+                <button onClick={this.handleDeleteList}>Delete List Peter Database</button> */}
             </div>)
     }
 }

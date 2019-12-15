@@ -1,170 +1,55 @@
 {
     "members":[
         {
-            "firstName": "Peter", 
-            "lastName": "Paker", 
-            "id": 100000000,
-            "administrator": false,
-            "projects": [
-                {
-                    "name": "Photograph portfolio",
-                    "key": 0,
-                    "height":1000,
-                    "width": 1000,
-                    "timestamp": 0,
-                    "components": [
-                        {
-                            "control": "component_container",
-                            "properties": { 
-                                "text" : "None",
-                                "font_size" : "None",
-                                "background_color" : "#FFFFFFFF",
-                                "border_color" : "#FFFFFFFF",
-                                "border_thickness" : 1,
-                                "border_radius" : 1,
-                                "width": 100,
-                                "height": 100,
-                                "margin-top": 0
-                            }
-                        },
-                        {
-                            "control": "label",
-                            "properties": { 
-                                "text" : "Hello",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#AAAA3333",
-                                "border_thickness" : 2,
-                                "border_radius" : 2,
-                                "width": 10,
-                                "height": 10,
-                                "margin-top": 10
-                            }
-
-                        },
-                        {
-                            "control": "button",
-                            "properties": { 
-                                "text" : "CLICK",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#AAAA3333",
-                               	"border_thickness" : 2,
-                                "border_radius" : 2,
-                                "width": 10,
-                                "height": 10,
-                                "margin-top": 20
-                            }
-
-                        },
-                        {
-                            "control": "textfield",
-                            "properties": { 
-                                "text" : "TEXTFIELD",
-                                "font_size" : 12,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#BBBBB111",
-                               	"border_thickness" : 2,
-                                "border_radius" : 2,
-                                "width": 100,
-                                "height": 100,
-                                "margin-top": 30
-                            }
-
+            "height": "500px",
+            "width": "500px",
+            "timestamp": 0,
+            "name": "Wireframe",
+            "components": [
+                    {
+                        "control": "component_container",
+                        "id": 0,
+                        "properties": { 
+                            "position" : "absolute",
+                            "height": "500px",
+                            "width": "500px",
+                            "text": "d.firstChild.data",
+                            "background-color": "#111111",
+                            "color": "#1ff1111",
+                            "font-size": "5px",
+                            "border": "5px",
+                            "border-color": "#aaaa1",
+                            "border-width": "5px",
+                            "border-radius": "5px",
+                            "x": 0,
+                            "y": 10,
+                            "resize":"both",
+                            "overflow":"hidden"
                         }
-                    ]
-
-                }, 
-                { 
-                    "name": "Spider-Man Rescue Thread",
-                    "key": 1,
-                    "height":1000,
-                    "width": 1000,
-                    "timestamp": 1,
-                    "component": [
-                        {
-                            "control": "container",
-                            "properties": { 
-                                "text" : "None",
-                                "font_size" : "None",
-                                "background_color" : "#FFFFFFFF",
-                                "border_color" : "#101010101",
-                                "border_thickness" : 1,
-                                "border_radius" : 1,
-                                "width": 100,
-                                "height": 100,
-                                "margin-top": 0
-                            }
-                        },
-                        {
-                            "control": "label",
-                             "properties": { 
-                                "text" : "Hello",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#AAAA3333",
-                                "border_thickness" : 3,
-                                "border_radius" : 3,
-                                "width": 10,
-                                "height": 10,
-                                "margin-top": 10
-                            }
-
-                        },
-                        {
-                            "control": "button",
-                            "properties": { 
-                                "text" : "CLICK",
-                                "font_size" : 10,
-                                "background_color" : "#EEEE3333",
-                                "border_color" : "#A5F33C83",
-                               	"border_thickness" : 2,
-                                "border_radius" : 2,
-                                "width": 10,
-                                "height": 10,
-                                "margin-top": 20
-                            }
-
+                    },
+                    {
+                        "control": "component_button",
+                        "id": 1,
+                        "properties": { 
+                            "position" : "absolute",
+                            "height": "5px",
+                            "width": "5px",
+                            "text": "dbutton",
+                            "background-color": "#111111",
+                            "color": "#1ff1111",
+                            "font-size": "5px",
+                            "border": "5px",
+                            "border-color": "#aaaa1",
+                            "border-width": "5px",
+                            "border-radius": "5px",
+                            "x": 0,
+                            "y": 10,
+                            "resize":"both",
+                            "overflow":"hidden"
                         }
-                    ]
-                }
-            ]
-        },
-        {
-            "firstName": "Prof", 
-            "lastName": "Mckenna", 
-            "id": 100000001,
-            "administrator": true,
-            "projects": [
-                {
-                    "name": "Wireframer",
-                    "key": 0,
-                    "height":1000,
-                    "width": 1000,
-                    "timestamp": 0,
-                    "components": [
-                        {
-                            "control": "component_container",
-                            "properties": { 
-                                "text" : "None",
-                                "font_size" : "None",
-                                "background_color" : "#FFFFFFFF",
-                                "border_color" : "#FFFFFFFF",
-                                "border_thickness" : 1,
-                                "border_radius" : 1,
-                                "width": 100,
-                                "height": 100,
-                                "margin-top": 0
-                            }
-                        }
-                    ]
-
-                
-                }
-            ]
-
+                    }
+                ]
         }
-
     ]
 }
 

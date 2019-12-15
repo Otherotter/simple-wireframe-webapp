@@ -20,8 +20,8 @@ class App extends Component{
     const { auth } = this.props;
     return (
       <BrowserRouter>
-      {console.log(firebaseConnect())}
-      {console.log(connect(mapStateToProps))}
+      {/* {console.log(firebaseConnect())}
+      {console.log(connect(mapStateToProps))} */}
         <div className="App" >
           <Navbar />
           <Switch>
@@ -32,13 +32,10 @@ class App extends Component{
             <Route path="/DatabaseTester" component={DatabaseTester} />
             <Route any path="/" component={HomeScreen} />
             {/*  />
-            
-            
-            
             <Route path="/Edit/name+id?WireframeName+WireframeId" component={ListScreen} />
             */}
           </Switch>
-          <Link to="/DatabaseTester">  <button> DateBaseTester</button> </Link>
+          {/* <Link to="/DatabaseTester">  <button> DateBaseTester</button> </Link> */}
         </div>
   
       </BrowserRouter>

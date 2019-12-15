@@ -13,10 +13,10 @@ class WireframeComponent extends React.Component {
        
         var text = "";
         if(component.properties.text !== null) text = component.properties.text
-        console.log("WireframeComponent")
-        console.log(component.properties);
-        console.log(component.properties.x)
-        console.log(component.properties.y)
+        // console.log("WireframeComponent")
+        // console.log(component.properties);
+        // console.log(component.properties.x)
+        // console.log(component.properties.y)
         let c_x = component.properties.x
         let c_y = component.properties.y
 

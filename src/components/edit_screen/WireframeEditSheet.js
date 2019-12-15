@@ -87,20 +87,26 @@ class WireframeEditSheet extends React.Component {
             console.log(this.props.components);
             console.log(this.state.itemComponent);
             var thenum = this.state.itemComponent.id.replace(/^\D+/g, ''); // replace all leading non-digits with nothing
+            console.log("The Number: " + thenum)
             console.log("This is the number: " + thenum);
-            if(this.props.components.length === 0){
-                console.log("Deleted list")
-               this.props.components.pop() 
+            if(this.props.components.length === 1){
+                console.log("Deleted list" + this.state.itemComponent)
+                console.log(this.props.components)
+                this.props.components.pop() 
+                console.log(this.props.components)
             }
-            else if(this.props.components.length >= 1){
+            else if(this.props.components.length >= 2){
                 console.log("Deleted list")
-                this.props.components.splice(thenum, 1);
+                // this.props.components.splice(thenum, 1);
+                for(var i = 0; i < this.props.components.length; i++){
+                    if(this.props.components[i] === thenum){
+                        this.props.components.pop(i) 
+                    }
+                }
             }
             this.deselect();
             this.setState({docChange: true})
-            for(var i in this.props.components){
-                this.props.components[i].id = i;
-            }
+    
         }
         else if(e.key ==='d' && e.ctrlKey===true){
             console.log(" Duplicate")
@@ -137,6 +143,10 @@ class WireframeEditSheet extends React.Component {
                             }
             });
             this.deselect();
+            for(var i in this.props.components){
+                this.props.components[i].id = i;
+            
+            }
             console.log(this.props.components)
         }    
 
@@ -154,8 +164,8 @@ class WireframeEditSheet extends React.Component {
             return
         }
         if(this.state.itemSelected === true) this.deselect()
-        console.log("handleComponentClick(element)");
-        console.log(element.target.style);
+        // console.log("handleComponentClick(element)");
+        // console.log(element.target.style);
         // for(let i = element.target.children.length-1; i >= 0 ; i--){
         //     if(element.target.children[i].tagName === "SPAN" ){
         //         var className = element.target.children[i].className;
@@ -233,7 +243,7 @@ class WireframeEditSheet extends React.Component {
     handleAddComponent(element){
         if(this.state.itemSelected === true) this.deselect()     
         let components = this.props.components;
-        console.log("handleAddComponent(element)");   
+        // console.log("handleAddComponent(element)");   
         components.push({
                             "control": element.target.className,
                             "id": components.length,
@@ -258,7 +268,7 @@ class WireframeEditSheet extends React.Component {
     
                             }
         });
-        console.log(components[components.length - 1])
+        // console.log(components[components.length - 1])
         // this.setState({itemSelected: true})
         this.setState({itemComponent: null})
         this.setState({docChange: true})

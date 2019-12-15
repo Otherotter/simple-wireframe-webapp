@@ -21,7 +21,7 @@ class Properties extends React.Component {
   
     handleChangeText = (text) =>{
         document.getElementById(this.props.itemComponent.id).firstChild.nodeValue = text.target.value;
-        console.log(document.getElementById(this.props.itemComponent.id))
+        // console.log(document.getElementById(this.props.itemComponent.id))
         this.props.tigger(true);
     };
     handleChangeFontSize = (number) =>{
@@ -57,9 +57,9 @@ class Properties extends React.Component {
     }
 
     handleChangeBorderColor = (color) => {
-        console.log(this.props.itemComponent.id)
+        // console.log(this.props.itemComponent.id)
         document.getElementById(this.props.itemComponent.id).style.borderColor = color.hex;
-        console.log(color)
+        // console.log(color)
         this.props.tigger(true);  
     };
     handleBorderClick = (e) => {
@@ -91,7 +91,7 @@ class Properties extends React.Component {
     }
 
     handleChangeBackgroundColor = (color) => {
-        console.log(this.props.itemComponent.id)
+        // console.log(this.props.itemComponent.id)
         document.getElementById(this.props.itemComponent.id).style.backgroundColor = color.hex;
         console.log(color)  
         this.props.tigger(true);
@@ -124,8 +124,8 @@ class Properties extends React.Component {
     }
 
     handleChangeFontColor = (color) => {
-        console.log("handleChangeFontColor = (color) =>")
-        console.log(document.getElementById(this.props.itemComponent.id).style.color)
+        // console.log("handleChangeFontColor = (color) =>")
+        // console.log(document.getElementById(this.props.itemComponent.id).style.color)
         document.getElementById(this.props.itemComponent.id).style.color = color.hex;
         this.props.tigger(true);
     };
@@ -161,16 +161,16 @@ class Properties extends React.Component {
         let itemComponent = this.props.itemComponent;
         //console.log(this.props.itemStyle);
         if(this.props.itemStyle !== null && itemComponent!==null){
-            console.log(this.props.itemStyle.fontSize)
-            console.log(itemComponent.className);
+            // console.log(this.props.itemStyle.fontSize)
+            // console.log(itemComponent.className);
             let componentClass = itemComponent.className.slice(0,itemComponent.className.indexOf(" "));
-            console.log(componentClass);
+            // console.log(componentClass);
             let element = document.getElementById(this.props.itemComponent.id)
-            console.log(element.style.fontSize);
-            console.log(element.style.backgroundColor);
-            console.log(element.style.borderColor);
-            console.log(element.style.borderWidth);
-            console.log(element.style.borderRadius);
+            // console.log(element.style.fontSize);
+            // console.log(element.style.backgroundColor);
+            // console.log(element.style.borderColor);
+            // console.log(element.style.borderWidth);
+            // console.log(element.style.borderRadius);
             let fontSize = parseInt(element.style.fontSize.slice(0,element.style.fontSize.indexOf("p")))
             let borderWidth = parseInt(element.style.borderWidth.slice(0,element.style.borderWidth.indexOf("p")))
             let borderRadius = parseInt(element.style.borderRadius.slice(0,element.style.borderRadius.indexOf("p")))
