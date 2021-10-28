@@ -17,7 +17,7 @@ import EditScreen from './components/edit_screen/EditScreen.js';
 class App extends Component{
 
   render() {
-    const { auth } = this.props;
+    /* const { auth } = this.props; */
     return (
       <BrowserRouter>
       {/* {console.log(firebaseConnect())}
